@@ -1,5 +1,6 @@
 import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
+import Bio from "@layouts/Bio";
 import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
 import Faq from "@layouts/Faq";
@@ -23,6 +24,8 @@ const RegularPages = ({ data }) => {
     >
       {layout === "404" ? (
         <NotFound data={data} />
+      ) : layout === "bio" ? (
+        <Bio data={data} />
       ) : layout === "contact" ? (
         <Contact data={data} />
       ) : layout === "pricing" ? (

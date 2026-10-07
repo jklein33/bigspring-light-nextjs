@@ -1,8 +1,9 @@
 {
   "main": [
-   
-    
-    
+    {
+      "name": "About",
+      "url": "/bio"
+    }
   ],
   "footer": [
     
