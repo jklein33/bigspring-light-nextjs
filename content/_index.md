@@ -1,34 +1,23 @@
 ---
 banner:
-  title: Bringing Artificial Intelligence Solutions to Every Day Businesses
-  content: Unlocking AI Potential for a New Era
-  image: /images/mainimg.png
+  title: Bringing custom software solutions to small businesses without paying enormous consulting and development fees.
+  content: ""
+  image: /images/james.png
   button:
     label: "Contact Us"
     link: "/contact"
 
+belief:
+  content: "Exodus believes that small businesses should have the same access to custom software that Fortune 500 companies have. Exodus's software as a service model allows companies to leverage powerful technology to expand their business without breaking the bank."
+
 # feature
 feature:
-  title: Something You Need To Know
+  title: Services
   features:
-    - name: " Cutting Edge LLM Models"
-      icon: "/images/code.svg"
-      content: "Our systems are built using the best models best suited to your needs"
-    - name: "Powerful Vector Databases"
-      icon: "/images/oop.svg"
-      content: "Rapidly locate and interpret large scale text-based data using Pinecone"
-    - name: "Professional Services"
-      icon: "/images/user-clock.svg"
-      content: "We offer basic service level agreements, ongoing development services and technical training"
-    - name: "Save Time and Money"
-      icon: "/images/love.svg"
-      content: "Our AI solutions add incredible efficiency and time savings to your day-to-day operations"
-    - name: "Analytics"
-      icon: "/images/speedometer.svg"
-      content: "Learn more about your users, capture sales leads and valuable insights to drive business decisions"
-    - name: "Cloud Hosting"
-      icon: "/images/cloud.svg"
-      content: "Data can be stored on any cloud provider of your choosing"
+    - name: "Custom Apps (Mobile and Desktop)"
+    - name: "Business and Software Consulting"
+    - name: "Analytics and Business Intelligence"
+    - name: "Artificial Intelligence and Machine Learning"
 
 # workflow
 workflow:

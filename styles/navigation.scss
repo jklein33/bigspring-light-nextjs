@@ -4,7 +4,7 @@
 
 // navbar items
 .navbar {
-  @apply relative flex flex-wrap items-center justify-between;
+  @apply relative flex flex-wrap items-center;
 }
 
 .navbar-brand {
@@ -20,7 +20,7 @@
 }
 
 #nav-menu {
-  @apply w-full overflow-hidden md:max-h-full md:w-auto;
+  @apply w-full overflow-hidden md:ml-auto md:max-h-full md:w-auto;
 }
 
 .nav-item {
@@ -32,7 +32,7 @@
 }
 
 .nav-link {
-  @apply px-2 py-3 font-primary text-base font-bold text-dark transition hover:text-primary md:py-4 lg:px-3;
+  @apply inline-flex items-center px-2 py-3 font-primary text-base font-bold text-white transition hover:text-primary md:py-2 lg:px-3;
 
   &-active {
     @apply text-primary;

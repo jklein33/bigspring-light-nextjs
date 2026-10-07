@@ -30,7 +30,7 @@ const Header = () => {
         {/* navbar toggler */}
         <button
           id="show-button"
-          className="order-2 flex cursor-pointer items-center md:order-1 md:hidden"
+          className="order-2 ml-auto flex cursor-pointer items-center text-white md:order-1 md:ml-0 md:hidden"
           onClick={() => setNavOpen(!navOpen)}
         >
           {navOpen ? (
@@ -109,8 +109,8 @@ const Header = () => {
           </ul>
         </div>
         {enable && (
-          <div className="d-flex order-1 ml-auto hidden min-w-[200px] items-center justify-end md:order-2 md:ml-0 md:flex">
-            <Link className="btn btn-primary z-0 py-[14px]" href={link} rel="">
+          <div className="order-1 ml-3 hidden items-center md:order-2 md:flex">
+            <Link className="btn btn-primary z-0 py-2" href={link} rel="">
               {label}
             </Link>
           </div>
