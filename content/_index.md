@@ -3,6 +3,7 @@ banner:
   title: Bringing custom software solutions to small businesses without paying enormous consulting and development fees.
   content: ""
   image: /images/james.png
+  background: /images/hero-bg.jpg
   button:
     label: "Contact Us"
     link: "/contact"

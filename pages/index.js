@@ -16,8 +16,24 @@ const Home = ({ frontmatter }) => {
   return (
     <Base title={title}>
       {/* Banner */}
-      <section className="section pb-10 pt-8 text-white md:pt-10">
-        <div className="container max-w-[1280px]">
+      <section className="section relative overflow-hidden pb-10 pt-8 text-white md:pt-10">
+        {banner.background && (
+          <>
+            <Image
+              src={banner.background}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="scale-105 object-cover opacity-40 blur-[2px]"
+            />
+            <div
+              className="absolute inset-0 bg-black/55"
+              aria-hidden="true"
+            />
+          </>
+        )}
+        <div className="container relative z-10 max-w-[1280px]">
           <div className="row text-center">
             <div className="col-12">
               <h1 className="font-bold text-white md:text-[3.4rem] md:leading-tight">
