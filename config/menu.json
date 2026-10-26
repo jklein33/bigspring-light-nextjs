@@ -1,11 +1,43 @@
 {
   "main": [
     {
+      "name": "How We Work",
+      "url": "/pricing"
+    },
+    {
+      "name": "FAQ",
+      "url": "/faq"
+    },
+    {
       "name": "About",
       "url": "/bio"
     }
   ],
   "footer": [
-    
+    {
+      "name": "Explore",
+      "menu": [
+        {
+          "text": "What we build",
+          "url": "/#services"
+        },
+        {
+          "text": "How we work",
+          "url": "/pricing"
+        },
+        {
+          "text": "FAQ",
+          "url": "/faq"
+        },
+        {
+          "text": "About",
+          "url": "/bio"
+        },
+        {
+          "text": "Contact",
+          "url": "/contact"
+        }
+      ]
+    }
   ]
 }

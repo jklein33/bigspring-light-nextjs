@@ -87,7 +87,7 @@ const Contact = ({ data }) => {
             </form>
           </div>
           <div className="content col-12 text-white md:col-6 lg:col-5">
-            {markdownify(info.title, "h4", "text-white")}
+            {markdownify(info.title, "h2", "h4 text-white")}
             {markdownify(info.description, "p", "mt-4", "text-white")}
             <ul className="contact-list mt-5">
               {info.contacts.map((contact, index) => (

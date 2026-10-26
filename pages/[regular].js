@@ -1,3 +1,4 @@
+import config from "@config/config.json";
 import NotFound from "@layouts/404";
 import Base from "@layouts/Baseof";
 import Bio from "@layouts/Bio";
@@ -6,12 +7,50 @@ import Default from "@layouts/Default";
 import Faq from "@layouts/Faq";
 import Pricing from "@layouts/Pricing";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
+import { absoluteUrl } from "@lib/seo";
+import { plainify } from "@lib/utils/textConverter";
 
 // for all regular pages
 const RegularPages = ({ data }) => {
-  const { title, meta_title, description, image, noindex, canonical, layout } =
-    data.frontmatter;
+  const {
+    title,
+    meta_title,
+    description,
+    image,
+    noindex,
+    canonical,
+    layout,
+    faqs,
+    name,
+    role,
+    photo,
+  } = data.frontmatter;
   const { content } = data;
+  const siteUrl = config.site.site_url;
+  const faqEntities =
+    layout === "faq" && faqs
+      ? faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.title,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: plainify(faq.answer),
+          },
+        }))
+      : undefined;
+  const extraSchema =
+    layout === "bio" && name
+      ? [
+          {
+            "@type": "Person",
+            name,
+            jobTitle: role,
+            image: absoluteUrl(siteUrl, photo),
+            url: absoluteUrl(siteUrl, "/bio"),
+            worksFor: { "@id": `${siteUrl.replace(/\/$/, "")}/#organization` },
+          },
+        ]
+      : undefined;
 
   return (
     <Base
@@ -21,6 +60,11 @@ const RegularPages = ({ data }) => {
       image={image}
       noindex={noindex}
       canonical={canonical}
+      pageType={
+        layout === "faq" ? "FAQPage" : layout === "contact" ? "ContactPage" : undefined
+      }
+      mainEntity={faqEntities}
+      extraSchema={extraSchema}
     >
       {layout === "404" ? (
         <NotFound data={data} />

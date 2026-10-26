@@ -1,4 +1,5 @@
 import config from "@config/config.json";
+import { absoluteUrl, buildSchema } from "@lib/seo";
 import { plainify } from "@lib/utils/textConverter";
 import Footer from "@partials/Footer";
 import Header from "@partials/Header";
@@ -12,85 +13,73 @@ const Base = ({
   image,
   noindex,
   canonical,
+  pageType,
+  mainEntity,
+  extraSchema,
   children,
 }) => {
   const { meta_image, meta_author, meta_description } = config.metadata;
-  const { base_url } = config.site;
+  const { site_url, title: siteTitle, email, services } = config.site;
   const router = useRouter();
+
+  const pageName = plainify(
+    meta_title ? meta_title : title ? title : siteTitle
+  );
+  const pageDescription = plainify(description ? description : meta_description);
+  const pagePath = router.asPath.split("#")[0].split("?")[0];
+  const pageUrl = canonical
+    ? absoluteUrl(site_url, canonical)
+    : absoluteUrl(site_url, pagePath);
+  const imageUrl = absoluteUrl(site_url, image || meta_image);
+  const schema = buildSchema({
+    siteUrl: site_url,
+    siteName: siteTitle,
+    description: plainify(meta_description),
+    email,
+    services,
+    pageUrl,
+    pageName,
+    pageDescription,
+    pageType,
+    mainEntity,
+    extra: extraSchema || [],
+  });
 
   return (
     <>
       <Head>
-        {/* title */}
-        <title>
-          {plainify(
-            meta_title ? meta_title : title ? title : config.site.title
-          )}
-        </title>
+        <title>{pageName}</title>
 
-        {/* canonical url */}
-        {canonical && <link rel="canonical" href={canonical} itemProp="url" />}
+        {!noindex && <link rel="canonical" href={pageUrl} />}
 
-        {/* noindex robots */}
-        {noindex && <meta name="robots" content="noindex,nofollow" />}
-
-        {/* meta-description */}
         <meta
-          name="description"
-          content={plainify(description ? description : meta_description)}
+          name="robots"
+          content={noindex ? "noindex,nofollow" : "index,follow"}
         />
-
-        {/* author from config.json */}
+        <meta name="description" content={pageDescription} />
         <meta name="author" content={meta_author} />
 
-        {/* og-title */}
-        <meta
-          property="og:title"
-          content={plainify(
-            meta_title ? meta_title : title ? title : config.site.title
-          )}
-        />
-
-        {/* og-description */}
-        <meta
-          property="og:description"
-          content={plainify(description ? description : meta_description)}
-        />
+        <meta property="og:title" content={pageName} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={`${base_url}/${router.asPath.replace("/", "")}`}
-        />
+        <meta property="og:site_name" content={siteTitle} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content={pageUrl} />
+        {imageUrl && <meta property="og:image" content={imageUrl} />}
 
-        {/* twitter-title */}
-        <meta
-          name="twitter:title"
-          content={plainify(
-            meta_title ? meta_title : title ? title : config.site.title
-          )}
-        />
-
-        {/* twitter-description */}
-        <meta
-          name="twitter:description"
-          content={plainify(description ? description : meta_description)}
-        />
-
-        {/* og-image */}
-        <meta
-          property="og:image"
-          content={`${base_url}${image ? image : meta_image}`}
-        />
-
-        {/* twitter-image */}
-        <meta
-          name="twitter:image"
-          content={`${base_url}${image ? image : meta_image}`}
-        />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageName} />
+        <meta name="twitter:description" content={pageDescription} />
+        {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+          }}
+        />
       </Head>
       <Header />
-      {/* main site */}
       <main>{children}</main>
       <Footer />
     </>

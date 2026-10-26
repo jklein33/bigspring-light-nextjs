@@ -7,15 +7,7 @@ const Document = () => {
   return (
     <Html lang="en">
       <Head>
-        {/* favicon */}
-        <link
-          rel="shortcut icon"
-          type="image/png"
-          sizes="32x32"
-          href={favicon}
-        />
-        {/* theme meta */}
-        <meta name="theme-name" content="next-boilerplate" />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon} />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta
           name="theme-color"

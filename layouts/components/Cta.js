@@ -11,7 +11,7 @@ function Cta({ cta }) {
             <Image
               className="w-full"
               src={cta?.image}
-              alt="call to action image"
+              alt=""
               width={325}
               height={206}
             />
