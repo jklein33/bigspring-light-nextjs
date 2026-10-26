@@ -3,8 +3,9 @@ import Base from "@layouts/Baseof";
 import { getRegularPage } from "@lib/contentParser";
 
 const notFound = ({ data }) => {
+  const { title, description, noindex } = data.frontmatter;
   return (
-    <Base>
+    <Base title={title} description={description} noindex={noindex}>
       <NotFound data={data} />
     </Base>
   );

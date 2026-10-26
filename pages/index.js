@@ -10,11 +10,25 @@ import "swiper/swiper.min.css";
 import { getListPage } from "../lib/contentParser";
 
 const Home = ({ frontmatter }) => {
-  const { banner, belief, feature, call_to_action } = frontmatter;
+  const {
+    banner,
+    belief,
+    feature,
+    agreement,
+    call_to_action,
+    meta_title,
+    description,
+    image,
+  } = frontmatter;
   const { title } = config.site;
 
   return (
-    <Base title={title}>
+    <Base
+      title={title}
+      meta_title={meta_title}
+      description={description}
+      image={image}
+    >
       {/* Banner */}
       <section className="section relative overflow-hidden pb-10 pt-8 text-white md:pt-10">
         {banner.background && (
@@ -68,12 +82,14 @@ const Home = ({ frontmatter }) => {
       </section>
 
       {/* Services */}
-      <section className="section bg-black">
+      <section className="section bg-black" id="services">
         <div className="container max-w-[1280px]">
           <div className="text-center">
-            <h2 className="text-white">{markdownify(feature.title)}</h2>
+            <h2 className="text-white" id="services-heading">
+              {markdownify(feature.title)}
+            </h2>
           </div>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2">
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {feature.features.map((item, i) => (
               <div
                 className="feature-card flex items-center justify-center rounded-xl bg-white px-8 py-14 text-center"
@@ -97,6 +113,33 @@ const Home = ({ frontmatter }) => {
           </div>
         </div>
       </section>
+
+      {agreement && (
+        <section className="section bg-theme-light" id="agreement">
+          <div className="container max-w-[1280px]">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 id="agreement-heading">{agreement.title}</h2>
+              <p className="mt-4 text-lg leading-relaxed">{agreement.content}</p>
+            </div>
+            <div className="mt-10 grid gap-8 md:grid-cols-3">
+              {agreement.points.map((point) => (
+                <div
+                  className="feature-card rounded-xl bg-white p-8 text-dark"
+                  key={point.name}
+                >
+                  {markdownify(point.name, "h3", "h5")}
+                  <p className="mt-4 leading-relaxed">{point.content}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link className="btn btn-primary" href="/pricing">
+                How engagements work
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Cta */}
       <Cta cta={call_to_action} />

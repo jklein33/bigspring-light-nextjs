@@ -1,7 +1,7 @@
 ---
 title: "About James"
-meta_title: "About James | Exodus Intelligence"
-description: "James is a full-stack data engineer with nearly a decade of experience building practical software for businesses."
+meta_title: "About James | Custom Software for Small Businesses"
+description: "James builds custom software for small businesses at Exodus Intelligence, including websites, web apps, progressive web apps, and AI solutions."
 image: "/images/james-family.png"
 layout: "bio"
 draft: false

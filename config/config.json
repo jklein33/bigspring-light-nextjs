@@ -2,11 +2,20 @@
   "site": {
     "title": "Exodus Intelligence",
     "base_url": "/",
+    "site_url": "https://exodusintelligence.ai",
+    "email": "james@exodusintelligence.ai",
     "favicon": "/images/logo.png",
     "logo": "/images/logo.png",
     "logo_width": "200",
     "logo_height": "48",
-    "logo_text": "Bigspring Light"
+    "logo_text": "Exodus Intelligence",
+    "services": [
+      "Custom applications for small businesses",
+      "Websites",
+      "Web apps",
+      "Progressive web apps",
+      "AI solutions"
+    ]
   },
 
   "settings": {
@@ -24,13 +33,13 @@
   "params": {
     "contact_form_action": "",
     "tag_manager_id": "",
-    "footer_content": "Unleash the potential of AI to drive your business forward—customized solutions for your unique success story.",
-    "copyright": ""
+    "footer_content": "Custom websites, web apps, progressive web apps, and AI solutions for small businesses. Low startup cost and SaaS agreements.",
+    "copyright": "© 2026 Exodus Intelligence. Custom software for small businesses."
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
-    "meta_image": "",
-    "meta_description": "A SAAS template for nextjs"
+    "meta_author": "Exodus Intelligence",
+    "meta_image": "/images/hero-bg.jpg",
+    "meta_description": "Exodus Intelligence builds custom websites, web apps, progressive web apps, and AI solutions for small businesses. Low startup cost, then a SaaS agreement."
   }
 }
